@@ -41,7 +41,7 @@ public class GetOrdersTest {
 
     @Test
     @DisplayName("Check get orders by authorized user")
-    public void getOrdersByAuthorizedUser() {
+    public void getOrdersByAuthorizedUserTest() {
         ValidatableResponse userCreateResponse = userClient.create(user);
         token = userCreateResponse.extract().path("accessToken");
         ValidatableResponse createOrderResponse = orderClient.create(order, token);
@@ -60,7 +60,7 @@ public class GetOrdersTest {
 
     @Test
     @DisplayName("Check that order can not be get by unauthorized user")
-    public void ordersCanNotBeGetByUnauthorizedUser() {
+    public void ordersCanNotBeGetByUnauthorizedUserTest() {
         ValidatableResponse getOrdersResponse = orderClient.getOrders(token);
         getOrdersResponse.statusCode(SC_UNAUTHORIZED)
                 .and()

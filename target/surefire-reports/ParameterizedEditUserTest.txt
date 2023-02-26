@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ParameterizedEditUserTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.479 s - in ParameterizedEditUserTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.701 s - in ParameterizedEditUserTest

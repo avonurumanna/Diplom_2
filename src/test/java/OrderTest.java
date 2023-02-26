@@ -39,7 +39,7 @@ public class OrderTest {
 
     @Test
     @DisplayName("Check that order can not be created by unauthorized user")
-    public void orderCanNotBeCreatedByUnauthorizedUser() {
+    public void orderCanNotBeCreatedByUnauthorizedUserTest() {
         order = new Order(IngredientRandomizer.getIngredients(ingredients, 5));
         ValidatableResponse createOrderResponse = orderClient.create(order, token);
         createOrderResponse.statusCode(SC_UNAUTHORIZED)
@@ -51,7 +51,7 @@ public class OrderTest {
 
     @Test
     @DisplayName("Check create order")
-    public void orderCanBeCreated() {
+    public void orderCanBeCreatedTest() {
         order = new Order(IngredientRandomizer.getIngredients(ingredients, 5));
         ValidatableResponse createUserResponse = userClient.create(user);
         token = createUserResponse.extract().path("accessToken");
@@ -68,7 +68,7 @@ public class OrderTest {
 
     @Test
     @DisplayName("Check that order can not be created without ingredients")
-    public void orderCanNotBeCreatedWithoutIngredients() {
+    public void orderCanNotBeCreatedWithoutIngredientsTest() {
         order = new Order(IngredientRandomizer.getIngredients(ingredients, 0));
         ValidatableResponse createUserResponse = userClient.create(user);
         token = createUserResponse.extract().path("accessToken");
@@ -84,7 +84,7 @@ public class OrderTest {
 
     @Test
     @DisplayName("Check that order can not be created with incorrect hash of ingredient")
-    public void orderCanNotBeCreatedWithIncorrectHashOfIngredient() {
+    public void orderCanNotBeCreatedWithIncorrectHashOfIngredientTest() {
         order = new Order(new ArrayList<>());
         order.getIngredients().add("123");
         ValidatableResponse createUserResponse = userClient.create(user);

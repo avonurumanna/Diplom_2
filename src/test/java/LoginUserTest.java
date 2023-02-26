@@ -27,7 +27,7 @@ public class LoginUserTest {
 
     @Test
     @DisplayName("Check that user can login")
-    public void loginWithValidCredentials() {
+    public void loginWithValidCredentialsTest() {
         ValidatableResponse createUserResponse = userClient.create(user);
         token = createUserResponse.extract().path("accessToken");
         ValidatableResponse loginUserResponse = userClient.login(UserCredentials.from(user));
@@ -48,7 +48,7 @@ public class LoginUserTest {
 
     @Test
     @DisplayName("Check that user can not login with invalid credentials")
-    public void loginWithInvalidCredentials() {
+    public void loginWithInvalidCredentialsTest() {
         ValidatableResponse loginUserResponse = userClient.login(UserCredentials.from(user));
         loginUserResponse.statusCode(SC_UNAUTHORIZED)
                 .and()

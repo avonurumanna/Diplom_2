@@ -27,9 +27,10 @@ public class CreateUserTest {
 
     @Test
     @DisplayName("Check create user")
-    public void userCanBeCreated() {
+    public void userCanBeCreatedTest() {
         user = UserGenerator.getValidUser();
         ValidatableResponse createUserResponse = userClient.create(user);
+        token = createUserResponse.extract().path("accessToken");
         createUserResponse.statusCode(SC_OK)
                 .and()
                 .assertThat().body("success", equalTo(true))
@@ -42,12 +43,12 @@ public class CreateUserTest {
                 .and()
                 .assertThat().body("refreshToken", notNullValue());
 
-        token = createUserResponse.extract().path("accessToken");
+
     }
 
     @Test
     @DisplayName("Check that the same user can not be created twice with the same input values")
-    public void userCanNotBeCreatedTwiceWithTheSameInputValues() {
+    public void userCanNotBeCreatedTwiceWithTheSameInputValuesTest() {
         user = UserGenerator.getValidUser();
         ValidatableResponse firstCreateUserResponse = userClient.create(user);
         token = firstCreateUserResponse.extract().path("accessToken");
@@ -61,7 +62,7 @@ public class CreateUserTest {
 
     @Test
     @DisplayName("Check that user can not be created without sending email")
-    public void userCanNotBeCreatedWithoutEmail() {
+    public void userCanNotBeCreatedWithoutEmailTest() {
         user = UserGenerator.getUserWithoutEmail();
         ValidatableResponse createUserResponse = userClient.create(user);
         createUserResponse.statusCode(SC_FORBIDDEN)

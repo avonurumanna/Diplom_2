@@ -45,7 +45,7 @@ public class ParameterizedEditUserTest {
 
     @Test
     @DisplayName("Check that authorized user can be updated")
-    public void authorizedUserCanBeUpdated() {
+    public void authorizedUserCanBeUpdatedTest() {
         ValidatableResponse createUserResponse = userClient.create(user);
         token = createUserResponse.extract().path("accessToken");
         ValidatableResponse editUserResponse = userClient.edit(token, parameterName, value);
@@ -56,7 +56,7 @@ public class ParameterizedEditUserTest {
 
     @Test
     @DisplayName("Check that unauthorized user can not be updated")
-    public void unauthorizedUserCanNotBeUpdated() {
+    public void unauthorizedUserCanNotBeUpdatedTest() {
         ValidatableResponse createUserResponse = userClient.create(user);
         ValidatableResponse editUserResponse = userClient.edit(token, parameterName, value);
         editUserResponse.statusCode(SC_UNAUTHORIZED)
